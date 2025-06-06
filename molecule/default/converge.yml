@@ -1,5 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  gather_facts: true
+  become: true
   roles:
-    - role: genlab.template
+    - role: genlab.karma
+      config_source_dir: molecule/default/

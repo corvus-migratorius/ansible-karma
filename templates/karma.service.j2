@@ -1,0 +1,17 @@
+[Unit]
+Description=Karma - Alertmanager dashboard
+After=network.target
+Documentation=https://github.com/prymitive/karma
+
+[Service]
+User={{ karma_user }}
+Group={{ karma_group }}
+ExecStart={{ karma_dir }}/karma-linux-amd64 --config.file={{ karma_config_dir }}/karma.conf
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=karma
+
+[Install]
+WantedBy=multi-user.target
