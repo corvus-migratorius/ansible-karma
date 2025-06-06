@@ -6,7 +6,7 @@ Documentation=https://github.com/prymitive/karma
 [Service]
 User={{ karma_user }}
 Group={{ karma_group }}
-ExecStart={{ karma_dir }}/karma-linux-amd64 --config.file={{ karma_config_dir }}/karma.conf
+ExecStart=karma --config.file={{ karma_config_dir }}/karma.conf
 Restart=always
 RestartSec=5
 StandardOutput=syslog

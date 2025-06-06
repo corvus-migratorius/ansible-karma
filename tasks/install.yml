@@ -57,6 +57,20 @@
         creates: "{{ karma_dir }}/karma-linux-amd64"
         remote_src: true
 
+    - name: "Cleanup downloaded file"
+      ansible.builtin.file:
+        path: "/tmp/karma-{{ karma_version }}.linux-amd64.tar.gz"
+        state: absent
+
+    - name: "Move karma binary"
+      ansible.builtin.copy:
+        src: "{{ karma_dir }}/karma-linux-amd64"
+        dest: "/usr/local/bin/karma"
+        mode: "0755"
+        owner: "{{ karma_user }}"
+        group: "{{ karma_group }}"
+        remote_src: true
+
 - name: Create systemd service file
   ansible.builtin.template:
     src: karma.service.j2
