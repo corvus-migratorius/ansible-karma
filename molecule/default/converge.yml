@@ -5,4 +5,5 @@
   become: true
   roles:
     - role: genlab.karma
+      karma_version: "0.121"
       config_source_dir: molecule/default/
