@@ -4,6 +4,7 @@ After=network.target
 Documentation=https://github.com/prymitive/karma
 
 [Service]
+Type=simple
 User={{ karma_user }}
 Group={{ karma_group }}
 ExecStart=karma --config.file={{ karma_config_dir }}/karma.conf
