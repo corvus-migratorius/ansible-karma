@@ -46,7 +46,7 @@
       ansible.builtin.unarchive:
         src: "https://github.com/prymitive/karma/releases/download/v{{ karma_version }}/karma-linux-amd64.tar.gz"
         dest: "{{ karma_dir }}"
-        remote_src: yes
+        remote_src: true
 
     - name: "Move karma binary"
       ansible.builtin.copy:
