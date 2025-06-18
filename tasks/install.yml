@@ -41,26 +41,12 @@
         - "{{ karma_dir }}"
         - "{{ karma_config_dir }}"
 
-    - name: Download karma binary
-      ansible.builtin.get_url:
-        url: "https://github.com/prymitive/karma/releases/download/v{{ karma_version }}/karma-linux-amd64.tar.gz"
-        dest: "/tmp/karma-{{ karma_version }}.linux-amd64.tar.gz"
-        mode: '0644'
-        owner: "{{ karma_user }}"
-        group: "{{ karma_group }}"
-
-    - name: "Unpack karma binary"
+    - name: "Unarchive karma tar file"
       notify: "(Re)start and enable karma"
       ansible.builtin.unarchive:
-        src: "/tmp/karma-{{ karma_version }}.linux-amd64.tar.gz"
+        src: "https://github.com/prymitive/karma/releases/download/v{{ karma_version }}/karma-linux-amd64.tar.gz"
         dest: "{{ karma_dir }}"
-        creates: "{{ karma_dir }}/karma-linux-amd64"
-        remote_src: true
-
-    - name: "Cleanup downloaded file"
-      ansible.builtin.file:
-        path: "/tmp/karma-{{ karma_version }}.linux-amd64.tar.gz"
-        state: absent
+        remote_src: yes
 
     - name: "Move karma binary"
       ansible.builtin.copy:
