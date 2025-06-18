@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: "template"
+  role_name: "karma"
   namespace: genlab
   author: "Alexander Gorelyshev"
   company: "Genlab, LLC"
@@ -12,6 +12,6 @@ galaxy_info:
     - name: "Ubuntu"
       versions: [ "focal", "jammy", "noble" ]
 
-  galaxy_tags: [ ]
+  galaxy_tags: [ monitoring ]
 
 dependencies: []
